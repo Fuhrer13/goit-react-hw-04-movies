@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  background-color: whitesmoke;
+}
+.nav {
+  margin-bottom: 5px;
+}
+.navList {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  background-color: rgb(9, 17, 24);
+  padding: 0;
+  margin: 0;
+  height: 50px;
+}
+.navItem {
+  list-style: none;
+  width: 100px;
+  height: 100%;
+}
+.navLink {
+  text-decoration: none;
+  color: whitesmoke;
+  text-transform: uppercase;
+  line-height: 50px;
+  display: block;
+  text-align: center;
+  font-weight: 900;
+}
+.activeClassLink {
+  color: green;
+}

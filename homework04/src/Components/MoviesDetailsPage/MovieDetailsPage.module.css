@@ -1,0 +1,17 @@
+.btn {
+  width: 120px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+.container {
+  margin-left: 10px;
+}
+.movieInfoBoard {
+  display: flex;
+}
+.movieInfo {
+  padding-left: 10px;
+}
+.list {
+  list-style: none;
+}
