@@ -1,13 +1,13 @@
-import React, { Suspense, lazy } from "react";
-import NavBar from "./Components/NavBar/NavBar";
-import { Route, Switch } from "react-router-dom";
-import Loader from "./Components/Loader/Loader";
-import { routes } from "./Helpers/router";
+import React, { Suspense, lazy } from 'react';
+import NavBar from './Components/NavBar/NavBar';
+import { Route, Switch } from 'react-router-dom';
+import Loader from './Components/Loader/Loader';
+import { routes } from './Helpers/router';
 
-const HomePage = lazy(() => import("./Components/HomePage/HomePage"));
-const MoviesPage = lazy(() => import("./Components/MoviesPage/MoviesPage"));
+const HomePage = lazy(() => import('./Page/HomePage/HomePage'));
+const MoviesPage = lazy(() => import('./Page/MoviesPage/MoviesPage'));
 const MovieDetailsPage = lazy(() =>
-  import("./Components/MoviesDetailsPage/MoviesDetailsPage")
+  import('./Page/MoviesDetailsPage/MoviesDetailsPage'),
 );
 
 function App() {

@@ -1,14 +1,6 @@
-// import React from "react";
-
-// const Loader = () => {
-//   return <h1>Loading...</h1>;
-// };
-
-// export default Loader;
-
-import React from "react";
-import Loader from "react-loader-spinner";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import React from 'react';
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 const Spinner = () => {
   return (

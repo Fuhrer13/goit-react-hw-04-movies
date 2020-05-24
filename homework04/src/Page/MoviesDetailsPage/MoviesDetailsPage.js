@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { getMovieDetails } from "../../Helpers/movies-api";
-import { NavLink, Switch, Route } from "react-router-dom";
-import Cast from "../../Components/Cast/Cast";
-import Review from "../../Components/Review/Review";
-import { routes } from "../../Helpers/router";
-import classes from "./MovieDetailsPage.module.css";
+import React, { Component } from 'react';
+import { getMovieDetails, bigImgLink } from '../../Helpers/movies-api';
+import { NavLink, Switch, Route } from 'react-router-dom';
+import Cast from '../../Components/Cast/Cast';
+import Review from '../../Components/Review/Review';
+import { routes } from '../../Helpers/router';
+import classes from './MovieDetailsPage.module.css';
 
 class MovieDetailsPage extends Component {
   state = {
@@ -12,14 +12,14 @@ class MovieDetailsPage extends Component {
   };
   componentDidMount() {
     const { id } = this.props.match.params;
-    getMovieDetails(id).then((movie) => this.setState({ movie }));
+    getMovieDetails(id).then(movie => this.setState({ movie }));
   }
   goBack = () => {
     const { location, history } = this.props;
     if (location.state) {
       return history.push({ ...location.state.from });
     }
-    history.push("/");
+    history.push(routes.HOME);
   };
   render() {
     const {
@@ -38,12 +38,7 @@ class MovieDetailsPage extends Component {
         </button>
         <section className={classes.movieInfoBoard}>
           <div>
-            {poster_path && (
-              <img
-                src={`https://image.tmdb.org/t/p/w342${poster_path}`}
-                alt=""
-              />
-            )}
+            {poster_path && <img src={`${bigImgLink}${poster_path}`} alt="" />}
           </div>
           <div className={classes.movieInfo}>
             <h1>{title}</h1>
@@ -52,16 +47,32 @@ class MovieDetailsPage extends Component {
             <p>{overview}</p>
             <h3>Genres</h3>
             {genres &&
-              genres.map((genre) => <span key={genre.id}>{genre.name}</span>)}
+              genres.map(genre => <span key={genre.id}>{genre.name}</span>)}
           </div>
         </section>
         <p>Additional information</p>
         <ul className={classes.list}>
           <li>
-            <NavLink to={`${match.url}${routes.MOVIE_CAST}`}>Cast</NavLink>
+            <NavLink
+              to={{
+                pathname: `${match.url}${routes.MOVIE_CAST}`,
+                state: {
+                  from: this.props.location.state.from,
+                },
+              }}
+            >
+              Cast
+            </NavLink>
           </li>
           <li>
-            <NavLink to={`${match.url}${routes.MOVIE_REVIEWS}`}>
+            <NavLink
+              to={{
+                pathname: `${match.url}${routes.MOVIE_CAST}`,
+                state: {
+                  from: this.props.location.state.from,
+                },
+              }}
+            >
               Reviews
             </NavLink>
           </li>
@@ -69,11 +80,11 @@ class MovieDetailsPage extends Component {
         <Switch>
           <Route
             path={`${match.url}${routes.MOVIE_CAST}`}
-            render={(props) => <Cast {...props} id={match.params.id} />}
+            render={props => <Cast {...props} id={match.params.id} />}
           />
           <Route
             path={`${match.url}${routes.MOVIE_REVIEWS}`}
-            render={(props) => <Review {...props} id={match.params.id} />}
+            render={props => <Review {...props} id={match.params.id} />}
           />
         </Switch>
       </div>
